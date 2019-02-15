@@ -1,0 +1,50 @@
+<html>
+    I was
+    <b>here!</b
+    ><br /><br />
+
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <script>
+        var canvas;
+        var canvasContext;
+        var ballX = 0;
+        var ballSpeedX = 1;
+
+        window.onload = function() {
+            canvas = document.getElementById("gameCanvas");
+            canvasContext = canvas.getContext("2d");
+
+            const framesPerSecond = 10;
+            setInterval(function() {
+                drawEverything();
+                moveEverythig();
+            }, 1000 / framesPerSecond);
+        };
+
+        const drawEverything = () => {
+            if (ballX === 800) {
+                clearInterval(1);
+            }
+            ballX = ballX + 10;
+            console.log("Called draw everything!");
+
+            canvasContext.fillStyle = "black";
+            canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+
+            canvasContext.fillStyle = "red";
+            canvasContext.fillRect(ballX, 50, 10, 10);
+
+            canvasContext.fillStyle = "green";
+            canvasContext.fillRect(0, canvas.height / 2 - 50, 20, 100);
+        };
+
+        const moveEverythig = () => {
+            if (ballX === 600) {
+                clearInterval(1);
+            }
+            ballX += ballSpeedX;
+            console.log("Called move everything!");
+        };
+    </script>
+</html>
